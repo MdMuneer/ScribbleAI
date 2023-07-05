@@ -6,7 +6,7 @@ export function Navbar() {
   return (
     <div className="border-b py-4">
       <div className="container mx-auto flex justify-between">
-        <div>LOGO</div>
+        <div className="font-bold text-yellow-600">ScribbleAI</div>
         <nav className="flex gap-4">
           <Link href="/" className="font-medium">
             Generate Image
