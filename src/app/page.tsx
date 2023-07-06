@@ -31,9 +31,19 @@ export default function Home() {
     await saveSketchMutation({ ...formData, image });
   });
 
+  const emptyState = !sketchesQuery
+    ? "loading Sketches..."
+    : "No recent sketches";
+
+  console.log(
+    sketchesQuery !== "undefined",
+    sketchesQuery,
+    sketchesQuery !== undefined ? "s" : "m"
+  );
+
   return (
     <main className="flex flex-col items-center justify-between pt-8">
-      <div className="container mx-auto flex gap-4 flex-wrap justify-center p-0">
+      <div className="container mx-auto flex gap-4 flex-wrap justify-betweenp-0">
         <form className="flex flex-col gap-2" onSubmit={onSubmit}>
           <Label htmlFor="prompt" className="mb-1 mt-2">
             Prompt
@@ -61,7 +71,7 @@ export default function Home() {
           <div className="flex gap-2 w-full mt-6">
             <Button
               type="button"
-              variant={"ghost"}
+              variant="ghost"
               onClick={() => {
                 canvasRef.current?.clearCanvas();
               }}
@@ -81,24 +91,39 @@ export default function Home() {
             <div className=" mx-4 font-semibold">Recent Sketches</div>
             <div className="h-[2px] flex-1 bg-[#EEDC82]"></div>
           </div>
-          {sortedSketches.length > 0 ? (
+          {sketchesQuery !== undefined && sketchesQuery?.length ? (
             <div
               className="grid grid-cols-4 gap-4 overflow-scroll"
               style={{ height: "70vh" }}
             >
-              {sortedSketches.map((sketch: any) => (
-                <Image
-                  src={sketch.result}
-                  width="256"
-                  height="256"
-                  alt={sketch.result}
-                  key={sketch._id}
-                  style={{ borderRadius: "4px" }}
-                />
-              ))}
+              {sortedSketches.slice(0, 12).map((sketch) => {
+                return sketch.result ? (
+                  <Image
+                    src={sketch.result}
+                    width="256"
+                    height="256"
+                    alt={sketch.result}
+                    key={sketch._id}
+                    style={{ borderRadius: "4px" }}
+                    placeholder="blur"
+                    blurDataURL="./Assets/Blur.webp"
+                  />
+                ) : (
+                  <Image
+                    src="/Assets/Blur.webp"
+                    width="300"
+                    height="350"
+                    alt="/Assets/Blur.webp"
+                    key={sketch._id}
+                    style={{ borderRadius: "4px" }}
+                  />
+                );
+              })}
             </div>
           ) : (
-            <span className="w-full  text-center font-medium">Loading...</span>
+            <span className="w-full  text-center font-medium">
+              {emptyState}
+            </span>
           )}
         </section>
       </div>

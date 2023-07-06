@@ -11,12 +11,12 @@ export default function Home() {
   });
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between mt-6">
+    <main className="flex min-h-screen flex-col items-center  mt-6">
       <div className="flex items-center mb-6 w-3/4">
-            <div className="h-[2px] flex-1 bg-[#EEDC82]"></div>
-            <div className=" mx-4 font-bold">All Collections</div>
-            <div className="h-[2px] flex-1 bg-[#EEDC82]"></div>
-          </div>
+        <div className="h-[2px] flex-1 bg-[#EEDC82]"></div>
+        <div className=" mx-4 font-bold">All Collections</div>
+        <div className="h-[2px] flex-1 bg-[#EEDC82]"></div>
+      </div>
       <div className="grid grid-cols-4 gap-4">
         {sortedSketches.map((sketch) => (
           <Image
@@ -25,6 +25,8 @@ export default function Home() {
             height="256"
             alt={sketch.result}
             key={sketch.id}
+            placeholder="blur"
+            blurDataURL="/Assets/Blur.webp"
           />
         ))}
       </div>
