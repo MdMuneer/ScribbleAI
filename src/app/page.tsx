@@ -35,12 +35,6 @@ export default function Home() {
     ? "loading Sketches..."
     : "No recent sketches";
 
-  console.log(
-    sketchesQuery !== "undefined",
-    sketchesQuery,
-    sketchesQuery !== undefined ? "s" : "m"
-  );
-
   return (
     <main className="flex flex-col items-center justify-between pt-8">
       <div className="container mx-auto flex gap-4 flex-wrap justify-betweenp-0">
