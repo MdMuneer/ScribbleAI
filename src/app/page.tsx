@@ -7,6 +7,7 @@ import { useRef } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { ImageSkeleton } from "@/components/ui/imageSkeleton";
 
 export default function Home() {
   const saveSketchMutation = useMutation("sketches:saveSketch");
@@ -35,9 +36,11 @@ export default function Home() {
     ? "loading Sketches..."
     : "No recent sketches";
 
+  const hasResult = sortedSketches.some((result) => result.result);
+
   return (
     <main className="flex flex-col items-center justify-between pt-8">
-      <div className="container mx-auto flex gap-4 flex-wrap justify-betweenp-0">
+      <div className="container mx-auto flex gap-4 flex-wrap justify-center p-0">
         <form className="flex flex-col gap-2" onSubmit={onSubmit}>
           <Label htmlFor="prompt" className="mb-1 mt-2">
             Prompt
@@ -47,7 +50,9 @@ export default function Home() {
             {...register("prompt", { required: true })}
             placeholder="Please enter your prompt here"
           />
-          {errors.prompt && <span>This field is required</span>}
+          {errors.prompt && (
+            <span className="text-sm text-orange-600">Prompt is required</span>
+          )}
 
           <Label className="mt-4 mb-1">Canvas (Draw something below)</Label>
           <ReactSketchCanvas
@@ -78,17 +83,17 @@ export default function Home() {
             </Button>
           </div>
         </form>
-
         <section className="flex flex-col w-3/4">
           <div className="flex items-center mb-6">
             <div className="h-[2px] flex-1 bg-[#EEDC82]"></div>
             <div className=" mx-4 font-semibold">Recent Sketches</div>
             <div className="h-[2px] flex-1 bg-[#EEDC82]"></div>
           </div>
+
           {sketchesQuery !== undefined && sketchesQuery?.length ? (
             <div
               className="grid grid-cols-4 gap-4 overflow-scroll"
-              style={{ height: "70vh" }}
+              style={{ maxHeight: "70vh" }}
             >
               {sortedSketches.slice(0, 12).map((sketch) => {
                 return sketch.result ? (
@@ -103,14 +108,7 @@ export default function Home() {
                     blurDataURL="./Assets/Blur.webp"
                   />
                 ) : (
-                  <Image
-                    src="/Assets/Blur.webp"
-                    width="300"
-                    height="350"
-                    alt="/Assets/Blur.webp"
-                    key={sketch._id}
-                    style={{ borderRadius: "4px" }}
-                  />
+                  <ImageSkeleton />
                 );
               })}
             </div>

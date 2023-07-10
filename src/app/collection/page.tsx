@@ -2,6 +2,7 @@
 
 import { useQuery } from "../../../convex/_generated/react";
 import Image from "next/image";
+import { ImageSkeleton } from "@/components/ui/imageSkeleton";
 
 export default function Home() {
   const saveSketchMutation = useQuery("sketches:getSketches");
@@ -23,17 +24,19 @@ export default function Home() {
       </div>
       {sortedSketches?.length > 0 ? (
         <div className="grid grid-cols-4 gap-4">
-          {sortedSketches.map((sketch) => (
-            <Image
-              src={sketch.result}
-              width="256"
-              height="256"
-              alt={sketch.result}
-              key={sketch.id}
-              placeholder="blur"
-              blurDataURL="/Assets/Blur.webp"
-            />
-          ))}
+          {sortedSketches.map((sketch) =>
+            sketch.result ? (
+              <Image
+                src={sketch.result}
+                width="256"
+                height="256"
+                alt={sketch.result}
+                key={sketch.id}
+              />
+            ) : (
+              <ImageSkeleton key={sketch.id} />
+            )
+          )}
         </div>
       ) : (
         <span className="w-full text-center font-medium">{emptyState}</span>

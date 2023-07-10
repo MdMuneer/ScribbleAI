@@ -30,6 +30,7 @@ export const generate = internalAction(
       }
     )) as [string, string];
 
+    
     await runMutation("sketches:updateSketchResult", {
       sketchId,
       result: output[1],

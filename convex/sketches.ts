@@ -1,6 +1,5 @@
 import { Id } from "./_generated/dataModel";
 import { internalMutation, mutation, query } from "./_generated/server";
-// import { v } from "convex/values";
 
 export const saveSketch = mutation({
   handler: async (
@@ -10,7 +9,6 @@ export const saveSketch = mutation({
     const sketch = await db.insert("sketches", {
       prompt,
     });
-
     await scheduler.runAfter(0, "generate:generate", {
       sketchId: sketch.id,
       prompt,
