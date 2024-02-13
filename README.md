@@ -1,18 +1,22 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ScribbleAI: Interactive Drawing Application
 
-## Getting Started
+ScribbleAI is an innovative project developed and implemented using the Next.js framework for the frontend, Convex backend, and Tailwind CSS for styling. It offers an interactive drawing experience for users.
 
-First, run the development server:
+## Technologies Used
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- Next.js
+- Convex backend
+- Tailwind CSS
+- Replicate AI model
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## How It Works
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+ScribbleAI utilizes the Next.js framework for frontend development, providing a seamless user experience. The Convex backend powers the application's functionality, while Tailwind CSS ensures a visually appealing design. By integrating Replicate, an open-source AI model, ScribbleAI enhances drawing capabilities, offering users an immersive and engaging experience.
 
+## Usage
+
+To experience ScribbleAI, simply visit https://scribble-ai-wzis.vercel.app
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
