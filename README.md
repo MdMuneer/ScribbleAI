@@ -15,7 +15,7 @@ ScribbleAI utilizes the Next.js framework for frontend development, providing a 
 
 ## Usage
 
-To experience ScribbleAI, simply visit https://scribble-ai-wzis.vercel.app
+To check ScribbleAI, simply visit https://scribble-ai-wzis.vercel.app
 
 ## License
 
