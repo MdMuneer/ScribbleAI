@@ -1,6 +1,7 @@
 "use client";
+import { api } from "../../convex/_generated/api";
+import { useMutation, useQuery } from "convex/react";
 import { useForm } from "react-hook-form";
-import { useMutation, useQuery } from "../../convex/_generated/react";
 import { ReactSketchCanvas, ReactSketchCanvasRef } from "react-sketch-canvas";
 import Image from "next/image";
 import { useRef } from "react";
@@ -10,8 +11,8 @@ import { Button } from "@/components/ui/button";
 import { ImageSkeleton } from "@/components/ui/imageSkeleton";
 
 export default function Home() {
-  const saveSketchMutation = useMutation("sketches:saveSketch");
-  const sketchesQuery = useQuery("sketches:getSketches");
+  const saveSketchMutation = useMutation(api.sketches.saveSketch);
+  const sketchesQuery = useQuery(api.sketches.getSketches);
   const canvasRef = useRef<ReactSketchCanvasRef>(null);
 
   const {
@@ -32,11 +33,12 @@ export default function Home() {
     await saveSketchMutation({ ...formData, image });
   });
 
-  const emptyState = !sketchesQuery
+  const hasResult = sortedSketches.some((result) => result.result);
+
+  const emptyState = !sketchesQuery && !hasResult
     ? "loading Sketches..."
     : "No recent sketches";
 
-  const hasResult = sortedSketches.some((result) => result.result);
 
   return (
     <main className="flex flex-col items-center justify-between pt-8">
