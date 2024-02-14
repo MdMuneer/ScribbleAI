@@ -12,7 +12,7 @@ export default function Home() {
   });
 
   const emptyState = !sketches
-    ? "loading Sketches..."
+    ? "Loading sketches..."
     : "No recent sketches :(";
 
     const sketchesLength = sortedSketches?.length;

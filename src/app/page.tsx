@@ -36,7 +36,7 @@ export default function Home() {
   const hasResult = sortedSketches.some((result) => result.result);
 
   const emptyState = !sketchesQuery && !hasResult
-    ? "loading Sketches..."
+    ? "Loading sketches..."
     : "No recent sketches";
 
 
