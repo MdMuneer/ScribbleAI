@@ -1,6 +1,6 @@
 # [ScribbleAI](https://scribble-ai-wzis.vercel.app): Interactive Drawing Application
 
-ScribbleAI is an innovative project developed and implemented using the Next.js framework for the frontend, Convex backend, and Tailwind CSS for styling. It offers an interactive drawing experience for users.asa
+ScribbleAI is an innovative project developed and implemented using the Next.js framework for the frontend, Convex backend, and Tailwind CSS for styling. It offers an interactive drawing experience for users.
 
 ## Technologies Used
 
