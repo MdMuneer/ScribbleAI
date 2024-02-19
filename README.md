@@ -16,6 +16,7 @@ ScribbleAI utilizes the Next.js framework for frontend development, providing a 
 ## Screenshots
 
 <img width="1427" alt="Screenshot 2024-02-19 at 11 46 09 PM" src="https://github.com/MdMuneer/ScribbleAI/assets/31310562/1e490492-f468-4d02-afeb-a04d3943b339">
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
